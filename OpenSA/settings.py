@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django_celery_results',
     'django_celery_beat',
     'bootstrap3',
-    # 'users',
+    'users',
     'asset',
     'audit',
     'jobs',
@@ -57,7 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'opensa.api.RequestMiddleware',
+    'opensa.api.RequestMiddleware',
 ]
 
 ROOT_URLCONF = 'OpenSA.urls'
@@ -74,7 +74,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.i18n',
-                # 'opensa.api.custom_project',
+                'opensa.api.custom_project',
             ],
         },
     },
@@ -131,7 +131,7 @@ AUTH_PASSWORD_VALIDATORS = [
 LOGIN_REDIRECT_URL = reverse_lazy('index')
 LOGIN_URL = reverse_lazy('users:login')
 # 用户认证模块
-# AUTH_USER_MODEL = 'users.UserProfile'
+AUTH_USER_MODEL = 'users.UserProfile'
 TOKEN_TIMEOUT = 120
 ugettext = lambda s: s
 LANGUAGE_CODE = 'zh-Hans'
