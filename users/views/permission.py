@@ -27,7 +27,7 @@ from users.forms import PermissionListForm
 from users.models import PermissionList
 
 
-class PermissionListALL(LoginPermissionRequired, ListView):
+class PermissionListAll(LoginPermissionRequired, ListView):
     model = PermissionList
     template_name = 'users/permission-list.html'
     queryset = PermissionList.objects.all()

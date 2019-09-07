@@ -48,7 +48,7 @@ urlpatterns = [
     path('key-all-del/', keys.KeyAllDel.as_view(), name='key_all_del'),
 
     # PermissionList View
-    # path('permission-list/', permission.PermissionListAll.as_view(), name='permission_list'),
+    path('permission-list/', permission.PermissionListAll.as_view(), name='permission_list'),
     path('permission-add/', permission.PermissionAdd.as_view(), name='permission_add'),
     path('permission-update/<int:pk>/', permission.PermissionUpdate.as_view(), name='permission_update'),
     path('permission-all-del/', permission.PermissionAllDel.as_view(), name='permission_all_del'),
