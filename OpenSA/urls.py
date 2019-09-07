@@ -15,14 +15,32 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import path
+
+from django.urls import path, include
 from django.views.generic import TemplateView
+from rest_framework import routers
 
+from OpenSA.api import Choice_Project
+from OpenSA.views import page_not_found, server_error, permission_denied, CheckCode, IndexView
+from asset.api import AssetViewSet, IdcViewSet, ServiceViewSet
 
-class IndexView(LoginRequiredMixin, TemplateView):
-    template_name = 'index.html'
-
-
+router = routers.DefaultRouter()
+router.register('asset', AssetViewSet)
+router.register('idc', IdcViewSet)
+router.register('service', ServiceViewSet)
+handler404 = page_not_found
+handler500 = server_error
+handler403 = permission_denied
 urlpatterns = [
     path('admin/', admin.site.urls),
+path('i18n/', include('django.conf.urls.i18n')),
+    path('admin/', admin.site.urls),
+    path('', IndexView.as_view(), name='index'),
+    path('choice-project/', Choice_Project.as_view(), name='choice_project'),
+    path('checkcode/', CheckCode, name='checkcode'),
+    path('users/', include('users.urls', namespace='users')),
+    path('asset/', include('asset.urls', namespace='asset')),
+    path('jobs/', include('jobs.urls', namespace='jobs')),
+    path('audit/', include('audit.urls', namespace='audit')),
+    path('api/', include(router.urls)),
 ]

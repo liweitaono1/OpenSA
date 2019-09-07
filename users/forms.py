@@ -70,7 +70,7 @@ class UsersFormAdd(forms.ModelForm):
 
     class Meta:
         model = UserProfile
-        exclude = ('id')
+        exclude = ('id',)
         fields = ["username", "password", "password1", "email", "department", "mobile", "project", "level", "role",
                   "is_active", "is_superuser", "comment"]
         widgets = {
